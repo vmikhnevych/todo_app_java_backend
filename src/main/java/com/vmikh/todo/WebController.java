@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -25,6 +26,20 @@ public class WebController {
         Task task = new Task();
         task.setName(TodoUtil.addCurrentDateToName(name));
         repository.save(task);
+        return "redirect:/todo";
+    }
+
+    @PostMapping("/todo/complete")
+    public String completeTask(@RequestParam Long id) {
+        Task task = repository.findById(id).orElseThrow();
+        task.setCompleted(true);
+        repository.save(task);
+        return "redirect:/todo";
+    }
+
+    @PostMapping("/todo/delete")
+    public String deleteTask(@RequestParam Long id) {
+        repository.deleteById(id);
         return "redirect:/todo";
     }
 

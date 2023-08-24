@@ -21,6 +21,21 @@
     <tbody>
     <tr th:each="task: ${tasks}">
         <td th:text="${task.name}"/>
+        <td><span th:if="${task.completed}" th:text="Completed"/></td>
+        <td>
+            <span th:unless="${task.completed}">
+            <form action="/todo/complete" method="post">
+                <input type="hidden" name="id" th:value="${task.id}"/>
+                <input type="submit" value="Complete"/>
+            </form>
+            </span>
+        </td>
+        <td>
+            <form action="/todo/delete" method="post">
+                <input type="hidden" name="id" th:value="${task.id}"/>
+                <input type="submit" value="Delete"/>
+            </form>
+        </td>
     </tr>
     </tbody>
 </table>
