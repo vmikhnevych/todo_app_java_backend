@@ -23,7 +23,7 @@ public class WebController {
     @PostMapping("/todo/create")
     public String createTask(String name) {
         Task task = new Task();
-        task.setName(Util.addCurrentDateToName(name));
+        task.setName(TodoUtil.addCurrentDateToName(name));
         repository.save(task);
         return "redirect:/todo";
     }

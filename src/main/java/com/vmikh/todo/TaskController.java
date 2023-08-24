@@ -3,7 +3,6 @@ package com.vmikh.todo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -21,7 +20,7 @@ public class TaskController {
     @PostMapping
     public Task createTask(@RequestBody String name) {
         Task task = new Task();
-        task.setName(Util.addCurrentDateToName(name));
+        task.setName(TodoUtil.addCurrentDateToName(name));
         return repository.save(task);
     }
 
