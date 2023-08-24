@@ -3,11 +3,12 @@ package com.vmikh.todo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/tasks")
+@RequestMapping("/todo/api/tasks")
 public class TaskController {
 
     private final TaskRepository repository;
@@ -18,7 +19,9 @@ public class TaskController {
     }
 
     @PostMapping
-    public Task createTask(@RequestBody Task task) {
+    public Task createTask(@RequestBody String name) {
+        Task task = new Task();
+        task.setName(Util.addCurrentDateToName(name));
         return repository.save(task);
     }
 
