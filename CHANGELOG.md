@@ -11,4 +11,6 @@ Features added in each release
 ### release-4
 * Complete Task
 * Delete Task
+### release-5
+* Docker support
 

@@ -23,6 +23,11 @@ $ mvn spring-boot:run
 ```
 This will start the application on port 8080. You can open it in a browser by navigating to `http://localhost:8080/todo`.
 
+### Run the application in Docker
+```
+$ docker-compose -f docker-compose.yml up
+```
+
 ### Run tests
 Make sure Maven is installed and on the classpath. Then run the following command:
 ```
