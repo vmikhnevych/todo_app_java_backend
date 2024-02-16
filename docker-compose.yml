@@ -23,4 +23,4 @@ services:
 
 networks:
   back-tier:
-    driver: host
+    driver: bridge
